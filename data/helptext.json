@@ -1,0 +1,17 @@
+[
+  {
+    "command": "/yesno",
+    "description": "Get a yes or no answer.",
+    "usage": "/yesno [question]"
+  },
+  {
+    "command": "/yt",
+    "description": "Return the most revelant YouTube video based off your search query.",
+    "usage": "/yt [search query]"
+  },
+  {
+    "command": "/urbandefine",
+    "description": "Return the highest rated Urban Dictonary definition based off your search query.",
+    "usage": "/urbandefine [search query]"
+  }
+]
