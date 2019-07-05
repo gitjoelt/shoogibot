@@ -27,8 +27,10 @@ It should look like this
 
 ```
 {
-  "token": "Your Telegram Bot API Token",
-  "youTubeKey": "Your Youtube API Key"
+  "token": "Your Telegram Bot API Key",
+  "youTubeKey": "Your Youtube API Key",
+  "azureSpellKey": "Your Azure Bing Spell Check API Key",
+  "azureSearchKey": "Your Azure Bing Search API Key"
 }
 ```
 

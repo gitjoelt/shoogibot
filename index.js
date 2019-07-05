@@ -5,6 +5,8 @@ const yt = require("./src/commands/yt");
 const start = require("./src/commands/start");
 const help = require("./src/commands/help");
 const urbandefine = require("./src/commands/urbandefine");
+const spellcheck = require("./src/commands/spellcheck");
+const imagesearch = require("./src/commands/imagesearch");
 
 const bot = new TelegramBot(config.token, { polling: true });
 
@@ -14,3 +16,5 @@ help(bot);
 yesNo(bot);
 yt(bot);
 urbandefine(bot);
+spellcheck(bot);
+imagesearch(bot);

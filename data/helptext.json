@@ -6,12 +6,22 @@
   },
   {
     "command": "/yt",
-    "description": "Return the most revelant YouTube video based off your search query.",
+    "description": "Get the most revelant YouTube video based off your search query.",
     "usage": "/yt [search query]"
   },
   {
     "command": "/urbandefine",
-    "description": "Return the highest rated Urban Dictonary definition based off your search query.",
+    "description": "Get the highest rated Urban Dictonary definition based off your search query.",
     "usage": "/urbandefine [search query]"
+  },
+  {
+    "command": "/spellcheck",
+    "description": "Get the text you provide spellchecked with corrections highlighted in bold.",
+    "usage": "/spellcheck [text]"
+  },
+  {
+    "command": "/imagesearch",
+    "description": "Get a collection of images related to your search query.",
+    "usage": "/imagesearch [search query]"
   }
 ]

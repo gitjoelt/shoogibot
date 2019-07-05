@@ -12,7 +12,6 @@ const yesNo = bot => {
     } else {
       bot.sendMessage(msg.chat.id, "No");
     }
-    return null;
   });
 };
 
