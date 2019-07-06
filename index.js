@@ -13,7 +13,19 @@ const autoweight = require("./src/commands/autoweight");
 const temp = require("./src/auto/temp");
 const weight = require("./src/auto/weight");
 
-const bot = new TelegramBot(config.token, { polling: true });
+const appurl = process.env.APPURL;
+let options = { polling: true };
+let bot = null;
+
+// running on Heroku or local
+if (appurl) {
+  const port = process.env.PORT;
+  options = { webHook: { port } };
+  bot = new TelegramBot(config.token, options);
+  bot.setWebHook(`${appurl}/bot${config.token}`);
+} else {
+  bot = new TelegramBot(config.token, options);
+}
 
 mongoose
   .connect(config.mongoConnection, { useNewUrlParser: true })
