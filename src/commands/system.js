@@ -5,16 +5,25 @@ const mode = process.env.APPURL ? "Production" : "Developer";
 const telegramAPIMethod = process.env.APPURL ? "Webhooks" : "Polling";
 const uptime = Math.floor(osbasic.uptime() / 3600);
 const uptimehours = uptime > 1 || uptime === 0 ? "hours" : "hour";
+let herokudata = "";
+
+if (process.env.DYNO) {
+  herokudata = `[Heroku Dyno]
+--------------------------------------------------
+<b>ID:</b>  ${process.env.DYNO}
+<b>Shared:</b> ${process.env.SHARED ? "yes" : "no"}
+<b>Memory:</b> ${process.env.MEMORY_AVAILABLE}\n\n`;
+}
 
 const system = bot => {
   bot.onText(/^\/system/, msg => {
     os.cpuUsage(usage => {
-      const responsemsg = `[System]
+      const responsemsg = `${herokudata}[System]
 --------------------------------------------------
 <b>Running:</b> ${process.title} ${process.version}
 <b>Platform:</b> ${os.platform()} ${process.arch}
 <b>Uptime:</b> ${uptime} ${uptimehours}
-<b>Load Average (last 15 mins):</b> ${Math.round(os.loadavg(15) * 100)}%
+<b>Load Average (last 15 mins):</b> ${os.loadavg(15).toFixed(2)}%
 
 [Telegram and Bot Settings]
 --------------------------------------------------
