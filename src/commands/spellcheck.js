@@ -1,6 +1,6 @@
 const axios = require("axios");
 const helper = require("../lib/helper");
-const config = require("../../tgbotconfig.json");
+const config = require("../../tgbotconfig");
 
 /**
  * Command: /spell[text]

@@ -1,6 +1,6 @@
 const TelegramBot = require("node-telegram-bot-api");
 const mongoose = require("mongoose");
-const config = require("./tgbotconfig.json");
+const config = require("./tgbotconfig");
 const yesNo = require("./src/commands/yesno");
 const yt = require("./src/commands/yt");
 const start = require("./src/commands/start");
@@ -14,6 +14,7 @@ const temp = require("./src/auto/temp");
 const weight = require("./src/auto/weight");
 
 const bot = new TelegramBot(config.token, { polling: true });
+
 mongoose
   .connect(config.mongoConnection, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB"))
