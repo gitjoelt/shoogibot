@@ -1,6 +1,6 @@
 # Telegram Bot
 
-This is the start of a project moving the Telegram Bot [@shoogi_bot](https://telegram.me/shoogi_bot) from PHP 5.3 + MySQL to NodeJS + MongoDB
+This is the start of a project moving the Telegram Bot [@shoogi_bot](https://telegram.me/shoogi_bot) from PHP 5.3 + MySQL to NodeJS + MongoDB. The app is designed to run on Heroku but it can also be run on any server with the requirements below.
 
 ### Requirements
 
@@ -8,7 +8,7 @@ Node >= 12.6.0
 
 NPM >= 6.9.0
 
-MongoDB >= 4.0.10
+MongoDB >= 3.6.9
 
 Telegram Messenger
 
@@ -24,22 +24,51 @@ npm install
 
 ### Config
 
-In the root of the project you will need to create a file called _tgbotconfig.json_
-It should look like this
+Navigate to the _tgbotconfig.js_ file in the root of the project. If you are not running this project on heroku you will need to include all the requested information in this area
 
 ```
-{
-  "token": "Your Telegram Bot API Key",
-  "youTubeKey": "Your Youtube API Key",
-  "azureSpellKey": "Your Azure Bing Spell Check API Key",
-  "azureSearchKey": "Your Azure Bing Search API Key",
-  "mongoConnection": "Your Mongo Connection String"
-}
+// Fill this out if you aren't running on Heroku
+  config = {
+    token: "",
+    youTubeKey: "",
+    azureSpellKey: "",
+    azureSearchKey: "",
+    mongoConnection: ""
+  };
+```
+
+### Heroku Config
+
+If you are running this app on heroku please add the following environment variables with their respective values
+
+```
+APPURL=Your App URL
+AZURESEARCHKEY=Your Key Here
+AZURESPELLKEY=Your Key Here
+MONGODB_URI=Your Connection String Here
+TOKEN=Your Token Here
+YOUTUBEKEY=Your Key Here
+```
+
+If you are planning on running this project locally through the _heroku local_ command you will need to add an .env file to the root of the project with these environment variables below
+
+```
+AZURESEARCHKEY=Your Key Here
+AZURESPELLKEY=Your Key Here
+MONGODB_URI=Your Connection String Here
+TOKEN=Your Token Here
+YOUTUBEKEY=Your Key Here
 ```
 
 ### Run
 
-To run the project type
+To run the project locally type
+
+```
+npm start
+```
+
+OR
 
 ```
 node index.js

@@ -10,9 +10,9 @@ let herokudata = "";
 if (process.env.DYNO) {
   herokudata = `[Heroku Dyno]
 --------------------------------------------------
-<b>ID:</b>  ${process.env.DYNO}
+<b>ID:</b> ${process.env.DYNO}
 <b>Shared:</b> ${process.env.SHARED ? "yes" : "no"}
-<b>Memory:</b> ${process.env.MEMORY_AVAILABLE}\n\n`;
+<b>Usable Memory:</b> ${process.env.MEMORY_AVAILABLE}MB\n\n`;
 }
 
 const system = bot => {
