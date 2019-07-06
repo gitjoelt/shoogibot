@@ -8,6 +8,8 @@ Node >= 12.6.0
 
 NPM >= 6.9.0
 
+MongoDB >= 4.0.10
+
 Telegram Messenger
 
 A Telegram Bot API Token (See [@botfather](https://telegram.me/botfather) on Telegram Messenger to get one)
@@ -30,7 +32,8 @@ It should look like this
   "token": "Your Telegram Bot API Key",
   "youTubeKey": "Your Youtube API Key",
   "azureSpellKey": "Your Azure Bing Spell Check API Key",
-  "azureSearchKey": "Your Azure Bing Search API Key"
+  "azureSearchKey": "Your Azure Bing Search API Key",
+  "mongoConnection": "Your Mongo Connection String"
 }
 ```
 

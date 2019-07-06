@@ -23,5 +23,15 @@
     "command": "/imagesearch",
     "description": "Get a collection of images related to your search query.",
     "usage": "/imagesearch [search query]"
+  },
+  {
+    "command": "/autotemp",
+    "description": "Toggle automatic temperature conversion from Celsius to Fahrenheit or vice versa during conversation.",
+    "usage": "/autotemp"
+  },
+  {
+    "command": "/autoweight",
+    "description": "Toggle automatic weight conversion from pounds to kilograms or vice versa during conversation.",
+    "usage": "/autoweight"
   }
 ]
