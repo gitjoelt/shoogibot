@@ -10,6 +10,7 @@ const spellcheck = require("./src/commands/spellcheck");
 const imagesearch = require("./src/commands/imagesearch");
 const autotemp = require("./src/commands/autotemp");
 const autoweight = require("./src/commands/autoweight");
+const system = require("./src/commands/system");
 const temp = require("./src/auto/temp");
 const weight = require("./src/auto/weight");
 
@@ -23,8 +24,10 @@ if (appurl) {
   options = { webHook: { port } };
   bot = new TelegramBot(config.token, options);
   bot.setWebHook(`${appurl}/bot${config.token}`);
+  console.log(`Running via webhook @ ${appurl}`);
 } else {
   bot = new TelegramBot(config.token, options);
+  console.log(`Running via polling (local mode)`);
 }
 
 mongoose
@@ -48,3 +51,4 @@ spellcheck(bot);
 imagesearch(bot);
 autotemp(bot);
 autoweight(bot);
+system(bot);

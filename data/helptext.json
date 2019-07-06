@@ -33,5 +33,10 @@
     "command": "/autoweight",
     "description": "Toggle automatic weight conversion from pounds to kilograms or vice versa during conversation.",
     "usage": "/autoweight"
+  },
+  {
+    "command": "/system",
+    "description": "Get system usage and environment information.",
+    "usage": "/system"
   }
 ]
