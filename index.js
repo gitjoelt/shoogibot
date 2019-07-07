@@ -13,6 +13,7 @@ const autotemp = require("./src/commands/autotemp");
 const autoweight = require("./src/commands/autoweight");
 const system = require("./src/commands/system");
 const chatsettings = require("./src/commands/chatsettings");
+const insight = require("./src/commands/insight");
 const temp = require("./src/auto/temp");
 const weight = require("./src/auto/weight");
 
@@ -56,3 +57,4 @@ autotemp(bot);
 autoweight(bot);
 system(bot);
 chatsettings(bot);
+insight(bot);

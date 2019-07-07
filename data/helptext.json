@@ -47,6 +47,11 @@
   {
     "command": "/chatsettings",
     "description": "Get information about the chatroom you are in.",
-    "usage": "/chatsettings [search query]"
+    "usage": "/chatsettings"
+  },
+  {
+    "command": "/insight",
+    "description": "Get sentiments (approval/disapproval scores and relevant discussion) on the topic you provide.",
+    "usage": "/insight [topic]"
   }
 ]

@@ -34,11 +34,9 @@ const search = bot => {
             crawlMessage = `✓ Checked on ${crawlDate}`;
           }
           const msgResponse = `${result.url}
-<i>Top result of ${res.data.webPages.totalEstimatedMatches} total matches</i>
--------------------------------------------------------------------------
-This link is${result.isFamilyFriendly ? "" : " <b>NOT</b>"} safe for work
-<i>${crawlMessage}</i>
--------------------------------------------------------------------------`;
+➥ This link is${result.isFamilyFriendly ? "" : " <b>NOT</b>"} safe for work
+${crawlMessage}\n
+<i>Top result of ${res.data.webPages.totalEstimatedMatches} total matches</i>`;
 
           bot.sendMessage(msg.chat.id, msgResponse, { parse_mode: "HTML" });
         } else {
