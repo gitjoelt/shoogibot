@@ -38,5 +38,15 @@
     "command": "/system",
     "description": "Get system usage and environment information.",
     "usage": "/system"
+  },
+  {
+    "command": "/search",
+    "description": "Get the top search result related to your search query.",
+    "usage": "/search [search query]"
+  },
+  {
+    "command": "/chatsettings",
+    "description": "Get information about the chatroom you are in.",
+    "usage": "/chatsettings [search query]"
   }
 ]

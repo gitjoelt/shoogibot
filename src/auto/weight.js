@@ -13,8 +13,8 @@ const weight = (bot, msg) => {
         return;
       }
       if (res[0].autoConvertWeight) {
-        const lbsMatches = msg.text.match(/( |^)[0-9]+lbs( |$)/gim);
-        const kgMatches = msg.text.match(/( |^)[0-9]+kg( |$)/gim);
+        const lbsMatches = msg.text.match(/( |^)[0-9]+(lb|lbs)( |$)/gim);
+        const kgMatches = msg.text.match(/( |^)[0-9]+(kg|kgs)( |$)/gim);
 
         let msgResponse = "";
         if (lbsMatches) {
@@ -23,6 +23,7 @@ const weight = (bot, msg) => {
               match
                 .toUpperCase()
                 .replace("LBS", "")
+                .replace("LB", "")
                 .trim()
             )}kg\n`;
           });
@@ -32,6 +33,7 @@ const weight = (bot, msg) => {
             msgResponse += `${match.trim()} ⟶ ${helper.weightMethods.kgtolbs(
               match
                 .toUpperCase()
+                .replace("KGS", "")
                 .replace("KG", "")
                 .trim()
             )}lbs\n`;
