@@ -4,7 +4,7 @@ const helper = require("../lib/helper");
 
 /**
  * Command: /insight [topic]
- * Searches tweets based off the topic provided and then returns a positive or negative insight on it using Microsoft's Insight API
+ * Searches tweets based off the topic provided and then returns a positive and negative insight on it using Microsoft's Insight API
  */
 
 const lowtohigh = (a, b) => {
@@ -52,6 +52,7 @@ const insight = bot => {
         }
         // if there are tweets available
         if (tweets.statuses.length > 0) {
+          // create an array of the tweets to convert to JSON for the sentiment API
           const tweetstext = [];
           tweets.statuses.forEach(status => {
             tweetstext.push({
@@ -60,7 +61,6 @@ const insight = bot => {
               language: status.lang
             });
           });
-          // create an array of the tweets to convert to JSON for the sentiment API
           let sendData = { documents: tweetstext };
           sendData = JSON.stringify(sendData);
           const axiosOptions = {
@@ -80,7 +80,7 @@ const insight = bot => {
               // if there are sentiments available to read
               if (sentiments.length > 0) {
                 let avgSentiment = 0;
-                // sort the sentiments from highest score to lowest so that first index is highest sentiment and last index is lowest
+                // sort the sentiments from lowest score to highest so that first index is lowest sentiment and last index is highest
                 sentiments.sort(lowtohigh);
                 sentiments.forEach(sentiment => {
                   avgSentiment += sentiment.score;

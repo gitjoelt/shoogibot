@@ -28,9 +28,22 @@ const imagesearch = bot => {
           const images = res.data.value.slice(0, 5);
           const imageGroup = [];
           images.forEach(image => {
-            imageGroup.push({ type: "photo", media: image.contentUrl });
+            imageGroup.push({
+              type: "photo",
+              media: image.contentUrl
+            });
           });
-          bot.sendMediaGroup(msg.chat.id, imageGroup);
+
+          // sending images can sometimes cause errors with telegram so we want to catch them
+          bot.sendMediaGroup(msg.chat.id, imageGroup).catch(senderror => {
+            bot.sendMessage(
+              msg.chat.id,
+              `<b>Oops, looks like there was an error with Telegram</b>\n<code>${senderror.code} - ${senderror.response.body.description}</code>`,
+              {
+                parse_mode: "HTML"
+              }
+            );
+          });
         } else {
           throw new Error(`No images found`);
         }
