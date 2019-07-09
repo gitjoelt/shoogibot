@@ -33,6 +33,11 @@ Navigate to the _tgbotconfig.js_ file in the root of the project. If you are not
     youTubeKey: "",
     azureSpellKey: "",
     azureSearchKey: "",
+    azureTextRecKey: "",
+    twitterAccessTokenKey: "",
+    twitterAccessTokenSecret: "",
+    twitterConsumerKey: "",
+    twitterConsumerSecret: "",
     mongoConnection: ""
   };
 ```
@@ -45,9 +50,14 @@ If you are running this app on heroku please add the following environment varia
 APPURL=Your App URL
 AZURESEARCHKEY=Your Key Here
 AZURESPELLKEY=Your Key Here
+AZURETEXTRECKEY=Your Key Here
 MONGODB_URI=Your Connection String Here
 TOKEN=Your Token Here
 YOUTUBEKEY=Your Key Here
+TWITTERCONSUMERKEY=Your Key Here
+TWITTERCONSUMERSECRET=Your Key Here
+TWITTERACCESSTOKENKEY=Your Key Here
+TWITTERACCESSTOKENSECRET=Your Key Here
 ```
 
 If you are planning on running this project locally through the _heroku local_ command you will need to add an .env file to the root of the project with these environment variables below
@@ -55,9 +65,14 @@ If you are planning on running this project locally through the _heroku local_ c
 ```
 AZURESEARCHKEY=Your Key Here
 AZURESPELLKEY=Your Key Here
+AZURETEXTRECKEY=Your Key Here
 MONGODB_URI=Your Connection String Here
 TOKEN=Your Token Here
 YOUTUBEKEY=Your Key Here
+TWITTERCONSUMERKEY=Your Key Here
+TWITTERCONSUMERSECRET=Your Key Here
+TWITTERACCESSTOKENKEY=Your Key Here
+TWITTERACCESSTOKENSECRET=Your Key Here
 ```
 
 ### Run

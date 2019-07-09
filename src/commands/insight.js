@@ -1,6 +1,7 @@
 const axios = require("axios");
 const Twitter = require("twitter");
 const helper = require("../lib/helper");
+const config = require("../../tgbotconfig.js");
 
 /**
  * Command: /insight [topic]
@@ -30,10 +31,10 @@ const insight = bot => {
     }
     // Connect to twitter and search for replies on the topic
     const client = new Twitter({
-      consumer_key: process.env.TWITTERCONSUMERKEY,
-      consumer_secret: process.env.TWITTERCONSUMERSECRET,
-      access_token_key: process.env.TWITTERACCESSTOKENKEY,
-      access_token_secret: process.env.TWITTERACCESSTOKENSECRET
+      consumer_key: config.twitterConsumerKey,
+      consumer_secret: config.twitterConsumerSecret,
+      access_token_key: config.twitterAccessTokenKey,
+      access_token_secret: config.twitterAccessTokenSecret
     });
     client.get(
       "search/tweets",
@@ -69,7 +70,7 @@ const insight = bot => {
               "https://eastus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment",
             data: sendData,
             headers: {
-              "Ocp-Apim-Subscription-Key": process.env.AZURETEXTRECKEY,
+              "Ocp-Apim-Subscription-Key": config.azureTextRecKey,
               "Content-Type": "application/json"
             }
           };
