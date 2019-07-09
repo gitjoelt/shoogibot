@@ -21,8 +21,6 @@ const getSystemInformation = async () => {
     const dataOS = await si.osInfo();
     const dataLoad = await si.currentLoad();
     const dataCPU = await si.cpu();
-    const dataCPUSpeed = await si.cpuCurrentspeed();
-    const dataCPUTemp = await si.cpuTemperature();
     const dataMem = await si.mem();
     const dataGraphics = await si.graphics();
     const dataDisk = await si.diskLayout();
@@ -35,7 +33,7 @@ const getSystemInformation = async () => {
 <b>Current Load:</b> ${dataLoad.currentload.toFixed(2)}%
 ${dataLoad.cpus
   .map((cpu, index) => {
-    return `➥ Core ${index}: ${cpu.load.toFixed(2)}%`;
+    return `➥ Core ${index + 1}: ${cpu.load.toFixed(1)}%`;
   })
   .join("\n")}
 
@@ -49,14 +47,6 @@ ${dataLoad.cpus
 --------------------------------------------------
 <b>CPU Model:</b> ${dataCPU.manufacturer} ${dataCPU.brand} ${dataCPU.speed}GHz
 <b>Cores:</b> ${dataCPU.cores || "N/A"}
-<b>Socket:</b> ${dataCPU.socket || "N/A"}
-<b>Avg Speed:</b> ${dataCPUSpeed.avg}GHz
-<b>Avg Temp: </b> ${dataCPUTemp.main || "N/A"}
-${dataCPUTemp.cores
-  .map((temp, index) => {
-    return `➥ Core ${index}: ${temp}`;
-  })
-  .join("\n")}
 
 [Memory]
 --------------------------------------------------
@@ -73,7 +63,7 @@ ${dataGraphics.controllers
       "N/A"}\n<b>Vendor (${index}):</b> ${controller.vendor ||
       "N/A"}\n<b>VRAM (${index}):</b> ${controller.vram + "MB" || "N/A"}`;
   })
-  .join("\n")}
+  .join("\n") || "<i>Graphics Data Unavailable</i>"}
 
 [Disk]
 --------------------------------------------------
@@ -84,7 +74,7 @@ ${dataDisk
       "N/A"}\n<b>Size (${index}):</b> ${helper.readableBytes(disk.size) ||
       "N/A"}`;
   })
-  .join("\n")}`;
+  .join("\n") || "<i>Disk Data Unavailable</i>"}`;
 
     return msgtext;
   } catch (e) {
