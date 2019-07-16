@@ -14,8 +14,10 @@ const autoweight = require("./src/commands/autoweight");
 const system = require("./src/commands/system");
 const chatsettings = require("./src/commands/chatsettings");
 const insight = require("./src/commands/insight");
+const stats = require("./src/commands/stats");
 const temp = require("./src/auto/temp");
 const weight = require("./src/auto/weight");
+const log = require("./src/auto/log");
 
 const appurl = process.env.APPURL;
 let options = { polling: true };
@@ -40,6 +42,7 @@ mongoose
 
 // Auto Messaging
 bot.on("message", msg => {
+  log(msg);
   temp(bot, msg);
   weight(bot, msg);
 });
@@ -58,3 +61,4 @@ autoweight(bot);
 system(bot);
 chatsettings(bot);
 insight(bot);
+stats(bot);

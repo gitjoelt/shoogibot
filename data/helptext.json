@@ -53,5 +53,10 @@
     "command": "/insight",
     "description": "Get sentiments (approval/disapproval scores and relevant discussion) on the topic you provide.",
     "usage": "/insight [topic]"
+  },
+  {
+    "command": "/stats",
+    "description": "Get bot usage statistics like unique users and chatrooms.",
+    "usage": "/stats"
   }
 ]
