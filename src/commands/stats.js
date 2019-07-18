@@ -16,12 +16,31 @@ const stats = bot => {
       if (res.length > 0) {
         const chatRooms = [...new Set(res.map(record => record.chatId))];
         const users = [...new Set(res.map(record => record.userId))];
-        responseMsg = `[General Stats]
+        const commandUsage = {};
+        let command = "";
+        res.forEach(record => {
+          command = record.command.replace("/", "");
+          if (commandUsage[command]) {
+            commandUsage[command] += 1;
+          } else {
+            commandUsage[command] = 1;
+          }
+        });
+
+        const commandEntries = Object.entries(commandUsage);
+        commandEntries.sort((a, b) => b[1] - a[1]);
+
+        responseMsg = `[Global Stats]
 --------------------------------------------------
 <b>Unique Chatrooms:</b> ${chatRooms.length}
 <b>Unique Users:</b> ${users.length}
-<b>Commands Executed:</b> ${res.length + 1}\n
-<i>Usage numbers are tallied on users that have issued at least one command</i>`;
+<b>Commands Executed:</b> ${res.length + 1}
+${commandEntries
+  .map(comm => {
+    return `➥ ${comm[0]}: ${comm[1]}`;
+  })
+  .join("\n")}\n
+<i>Each user and chatroom counted has issued at least one command</i>`;
       } else {
         responseMsg = `No usage stats recorded yet.`;
       }
