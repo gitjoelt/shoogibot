@@ -34,7 +34,7 @@ const stats = bot => {
 --------------------------------------------------
 <b>Unique Chatrooms:</b> ${chatRooms.length}
 <b>Unique Users:</b> ${users.length}
-<b>Commands Executed:</b> ${res.length + 1}
+<b>Commands Executed:</b> ${res.length}
 ${commandEntries
   .map(comm => {
     return `➥ ${comm[0]}: ${comm[1]}`;

@@ -42,9 +42,11 @@ mongoose
 
 // Auto Messaging
 bot.on("message", msg => {
-  log(msg);
-  temp(bot, msg);
-  weight(bot, msg);
+  if (typeof msg.text === "string" || msg.text instanceof String) {
+    log(msg);
+    temp(bot, msg);
+    weight(bot, msg);
+  }
 });
 
 // Commands
