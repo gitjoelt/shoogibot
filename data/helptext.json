@@ -58,5 +58,15 @@
     "command": "/stats",
     "description": "Get bot usage statistics like unique users and chatrooms.",
     "usage": "/stats"
+  },
+  {
+    "command": "/remindme",
+    "description": "Setup a reminder that will be triggered at the time specified.",
+    "usage": "/remindme [time];[message]"
+  },
+  {
+    "command": "/showreminders",
+    "description": "View reminders that are active in the chatroom.",
+    "usage": "/showreminders"
   }
 ]

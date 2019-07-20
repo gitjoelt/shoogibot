@@ -1,4 +1,5 @@
 const TelegramBot = require("node-telegram-bot-api");
+const { CronJob } = require("cron");
 const mongoose = require("mongoose");
 const config = require("./tgbotconfig");
 const yesNo = require("./src/commands/yesno");
@@ -15,9 +16,12 @@ const system = require("./src/commands/system");
 const chatsettings = require("./src/commands/chatsettings");
 const insight = require("./src/commands/insight");
 const stats = require("./src/commands/stats");
+const remindme = require("./src/commands/remindme");
+const showreminders = require("./src/commands/showreminders");
 const temp = require("./src/auto/temp");
 const weight = require("./src/auto/weight");
 const log = require("./src/auto/log");
+const sendremind = require("./src/cron/sendremind");
 
 const appurl = process.env.APPURL;
 let options = { polling: true };
@@ -64,3 +68,13 @@ system(bot);
 chatsettings(bot);
 insight(bot);
 stats(bot);
+remindme(bot);
+showreminders(bot);
+
+// Cron Jobs
+// Every 5 minutes
+const jobFiveMin = new CronJob("0 */5 * * * *", () => {
+  sendremind(bot);
+  console.log("Cron Job -- sendremind executed");
+});
+jobFiveMin.start();
