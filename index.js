@@ -18,6 +18,8 @@ const insight = require("./src/commands/insight");
 const stats = require("./src/commands/stats");
 const remindme = require("./src/commands/remindme");
 const showreminders = require("./src/commands/showreminders");
+const rtp = require("./src/commands/rtp");
+const rr = require("./src/commands/rr");
 const temp = require("./src/auto/temp");
 const weight = require("./src/auto/weight");
 const log = require("./src/auto/log");
@@ -70,6 +72,8 @@ insight(bot);
 stats(bot);
 remindme(bot);
 showreminders(bot);
+rtp(bot);
+rr(bot);
 
 // Cron Jobs
 // Every 5 minutes

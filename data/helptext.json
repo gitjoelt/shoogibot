@@ -68,5 +68,15 @@
     "command": "/showreminders",
     "description": "View reminders that are active in the chatroom.",
     "usage": "/showreminders"
+  },
+  {
+    "command": "/rtp",
+    "description": "Stands for Reddit Top Post -- retrieve the top post from the subreddit your enter.",
+    "usage": "/rtp [subreddit]"
+  },
+  {
+    "command": "/rr",
+    "description": "Stands for Reddit Random-- retrieve a random post from the subreddit your enter.",
+    "usage": "/rr [subreddit]"
   }
 ]
