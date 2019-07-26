@@ -78,5 +78,10 @@
     "command": "/rr",
     "description": "Stands for Reddit Random-- retrieve a random post from the subreddit your enter.",
     "usage": "/rr [subreddit]"
+  },
+  {
+    "command": "/quote",
+    "description": "Get a realtime quote on the ticker you specify (US and Canadian Markets Only).",
+    "usage": "/quote [ticker]"
   }
 ]

@@ -12,6 +12,7 @@ if (process.env.TOKEN === undefined) {
     twitterAccessTokenSecret: "",
     twitterConsumerKey: "",
     twitterConsumerSecret: "",
+    iextoken: "",
     mongoConnection: ""
   };
 } else {
@@ -25,6 +26,7 @@ if (process.env.TOKEN === undefined) {
     twitterAccessTokenSecret: process.env.TWITTERACCESSTOKENSECRET,
     twitterConsumerKey: process.env.TWITTERCONSUMERKEY,
     twitterConsumerSecret: process.env.TWITTERCONSUMERSECRET,
+    iextoken: process.env.IEXTOKEN,
     mongoConnection: process.env.MONGODB_URI
   };
 }
