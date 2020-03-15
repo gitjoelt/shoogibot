@@ -83,5 +83,10 @@
     "command": "/quote",
     "description": "Get a realtime quote on the ticker you specify (US and Canadian Markets Only).",
     "usage": "/quote [ticker]"
+  },
+  {
+    "command": "/corona",
+    "description": "Get information about the COVID-19 virus in a specified country, or leave blank for worldwide cases.",
+    "usage": "/corona [country]"
   }
 ]

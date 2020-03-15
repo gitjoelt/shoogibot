@@ -21,6 +21,7 @@ const showreminders = require("./src/commands/showreminders");
 const rtp = require("./src/commands/rtp");
 const rr = require("./src/commands/rr");
 const quote = require("./src/commands/quote");
+const corona = require("./src/commands/corona");
 const temp = require("./src/auto/temp");
 const weight = require("./src/auto/weight");
 const log = require("./src/auto/log");
@@ -76,6 +77,7 @@ showreminders(bot);
 rtp(bot);
 rr(bot);
 quote(bot);
+corona(bot);
 
 // Cron Jobs
 // Every 5 minutes
