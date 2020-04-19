@@ -12,9 +12,9 @@ const corona = bot => {
     let endpoint = "";
     let markdown = "";
     if (country) {
-      endpoint = "https://corona.lmao.ninja/countries";
+      endpoint = "https://corona.lmao.ninja/v2/countries";
     } else {
-      endpoint = "https://corona.lmao.ninja/all";
+      endpoint = "https://corona.lmao.ninja/v2/all";
     }
     axios
       .get(`${endpoint}`)
@@ -27,6 +27,7 @@ const corona = bot => {
           if (countryData) {
             markdown = `[${countryData.country}]
 --------------------------------------------------
+<b>Tests Performed:</b> ${countryData.tests.toLocaleString()}
 <b>Cases:</b> ${countryData.cases.toLocaleString()}
 <b>New Cases Today:</b> ${countryData.todayCases.toLocaleString()}
 <b>Deaths:</b> ${countryData.deaths.toLocaleString()}
@@ -50,6 +51,7 @@ You can look up your country code here worldometers.info/coronavirus/#countries`
         } else {
           markdown = `[Worldwide]
 --------------------------------------------------
+<b>Tests Performed:</b> ${res.data.tests.toLocaleString()}
 <b>Cases:</b> ${res.data.cases.toLocaleString()}
 <b>Deaths:</b> ${res.data.deaths.toLocaleString()}
 <b>Recovered:</b> ${res.data.recovered.toLocaleString()}
