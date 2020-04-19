@@ -25,6 +25,7 @@ const corona = bot => {
               data.country.toLowerCase() === decodeURI(country.toLowerCase())
           );
           if (countryData) {
+            const tdate = new Date(countryData.updated);
             markdown = `[${countryData.country}]
 --------------------------------------------------
 <b>Tests Performed:</b> ${countryData.tests.toLocaleString()}
@@ -35,7 +36,20 @@ const corona = bot => {
 <b>Critical:</b> ${countryData.critical.toLocaleString()}
 <b>Recovered:</b> ${countryData.recovered.toLocaleString()}
 
-<em>The following data has been provided by WorldOMeters.</em>`;
+Of those tested:
+-><strong> ${Math.floor(
+              (countryData.cases / countryData.tests) * 100
+            )}%</strong> tested positive for corona virus
+
+Of those who tested positive:
+-><strong> ${((countryData.deaths / countryData.cases) * 100).toFixed(
+              2
+            )}%</strong> died from corona virus
+-><strong> ${((countryData.recovered / countryData.cases) * 100).toFixed(
+              2
+            )}%</strong> recovered from corona virus
+
+<em>The following data has been provided by WorldOMeters and was last updated on ${tdate.toString()}.</em>`;
 
             bot.sendMessage(msg.chat.id, markdown, { parse_mode: "HTML" });
           } else {
