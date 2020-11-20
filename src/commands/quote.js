@@ -62,9 +62,9 @@ const quote = bot => {
         name: quoteData.data.companyName || longName,
         symbol: quoteData.data.ticker || quoteData.data.symbol,
         price: quoteData.data.price || quoteData.data.latestPrice,
-        change: quoteData.data.pointgl || quoteData.data.change || 0,
+        change: quoteData.data.pointgl || quoteData.data.change.toFixed(2) || 0,
         percent:
-          quoteData.data.percentgl || quoteData.data.changePercent * 100 || 0,
+          quoteData.data.percentgl || (quoteData.data.changePercent * 100).toFixed(2) || 0,
         year1changepercent: auxData.data * 100 || "",
         week52high: quoteData.data.week52High || "",
         week52low: quoteData.data.week52Low || "",
