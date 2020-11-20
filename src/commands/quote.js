@@ -91,7 +91,7 @@ const quote = bot => {
         }
         responseMsg += `${rtquote.price} ${
           rtquote.currency
-        } (${rtquote.change.toFixed(2)}) (${rtquote.percent.toFixed(2)}%)`;
+        } (${rtquote.change}) (${rtquote.percent}%)`;
         if (rtquote.year1changepercent > 0) {
           responseMsg += `\n\n${
             rtquote.symbol
