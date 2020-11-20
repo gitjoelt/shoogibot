@@ -28,7 +28,7 @@ const quote = bot => {
       let responseMsg = "";
       // Get Data from custom API
       quoteData = await axios.get(
-        `https://shoogibot.xyz/bot/tmxcustomapi.php?ticker=${ticker.replace(
+        `https://tmxapi.herokuapp.com/${ticker.replace(
           postfix,
           ""
         )}`
