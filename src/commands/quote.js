@@ -73,7 +73,7 @@ const quote = bot => {
       };
 
       if (rtquote.price) {
-        responseMsg = `<b>${rtquote.symbol.toUpperCase().replace(postfix, "")}</b>`;
+        responseMsg = `<b>${rtquote.symbol.replace(postfix, "").toUpperCase()}</b>`;
         if (rtquote.name) {
           responseMsg += ` ${rtquote.name}\n`;
         } else {
@@ -100,14 +100,14 @@ const quote = bot => {
         } else if (rtquote.year1changepercent < 0) {
           responseMsg += `\n\n${
             rtquote.name
-          } has gone down ${rtquote.year1changepercent.toFixed(
+          } has gone down ${Math.abs(rtquote.year1changepercent.toFixed(
             0
-          )}% over the last year.\n<i>During that time it reached a high of ${rtquote.week52high.toFixed(
+          ))}% over the last year.\n<i>During that time it reached a high of ${rtquote.week52high.toFixed(
             2
           )} and bottomed at ${rtquote.week52low.toFixed(2)}</i>`;
         }
         if (rtquote.peratio > 0) {
-          responseMsg += `\n\n${rtquote.name} is currently profitable.\n<i>Investors are currently paying ${Math.floor(rtquote.peratio)}x earnings to own this stock.</i>`;
+          responseMsg += `\n\n${rtquote.name} is currently profitable.\n<i>Investors are currently paying ${Math.floor(rtquote.peratio)}x earnings to own this company</i>`;
         } else if (rtquote.peratio < 0) {
           responseMsg += `\n\n${rtquote.name} is currently <b>not profitable</b> and <b>losing money</b>.\n<i>By holding this stock you could lose your investment if they declare bankruptcy -- not recommended for inexperienced investors</i>`;
         }
