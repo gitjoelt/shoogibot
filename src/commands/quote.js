@@ -26,15 +26,9 @@ const quote = bot => {
         ? ticker.match(/[.][a-z]+$/gim)[0]
         : "";
       let responseMsg = "";
-      // Get Data from custom API
-      quoteData = await axios.get(
-        `https://tmxapi.herokuapp.com/${ticker.replace(
-          postfix,
-          ""
-        )}`
-      );
+      
       // If no price is found, look using the IEX API instead (This is only for US stocks)
-      if (!quoteData.data.price) {
+      if (!postfix) {
         quoteData = await axios.get(
           `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${config.iextoken}`
         );
@@ -42,8 +36,11 @@ const quote = bot => {
           `https://cloud.iexapis.com/stable/stock/${ticker}/stats/year1ChangePercent?token=${config.iextoken}`
         );
         currency = "USD";
-      } else if (postfix) {
-        /* already found a price, so it must be a CDN stock from the custom API, pull further data from Yahoo Finance 
+      } else {
+        quoteData = await axios.get(
+          `https://tmxapi.herokuapp.com/${ticker}`
+        );
+        /* already found a price, so it must be a non-US stock from the custom API, pull further data from Yahoo Finance 
         but make sure it has a postfix so that the correct data is returned (Yahoo requires a postfix for CDN stocks) */
         auxData = await axios.get(
           `https://query1.finance.yahoo.com/v7/finance/options/${ticker}`
