@@ -60,7 +60,7 @@ const quote = bot => {
       // Assemble all the data into one object literal
       const rtquote = {
         name: quoteData.data.companyName || longName,
-        symbol: quoteData.data.ticker || quoteData.data.symbol,
+        symbol: quoteData.data.ticker.replace(postfix, "") || quoteData.data.symbol,
         price: quoteData.data.price || quoteData.data.latestPrice,
         change: quoteData.data.pointgl || quoteData.data.change.toFixed(2) || 0,
         percent:
@@ -91,7 +91,7 @@ const quote = bot => {
         } (${rtquote.change}) (${rtquote.percent}%)`;
         if (rtquote.year1changepercent > 0) {
           responseMsg += `\n\n${
-            rtquote.symbol
+            rtquote.name
           } has gone up ${rtquote.year1changepercent.toFixed(
             0
           )}% over the last year.\n<i>During that time it reached a high of ${rtquote.week52high.toFixed(
@@ -99,7 +99,7 @@ const quote = bot => {
           )} and bottomed at ${rtquote.week52low.toFixed(2)}</i>`;
         } else if (rtquote.year1changepercent < 0) {
           responseMsg += `\n\n${
-            rtquote.symbol
+            rtquote.name
           } has gone down ${rtquote.year1changepercent.toFixed(
             0
           )}% over the last year.\n<i>During that time it reached a high of ${rtquote.week52high.toFixed(
@@ -107,11 +107,9 @@ const quote = bot => {
           )} and bottomed at ${rtquote.week52low.toFixed(2)}</i>`;
         }
         if (rtquote.peratio > 0) {
-          responseMsg += `\n\n${rtquote.symbol.toUpperCase()} is currently profitable.\n<i>For every ~$${rtquote.peratio.toFixed(
-            2
-          )} you spend, you are entitled to one dollar of the companies earnings</i>`;
+          responseMsg += `\n\n${rtquote.name} is currently profitable.\n<i>Investors are currently paying ${Math.floor(rtquote.peratio)}x earnings to own this stock.</i>`;
         } else if (rtquote.peratio < 0) {
-          responseMsg += `\n\n${rtquote.symbol.toUpperCase()} is currently <b>not profitable</b> and <b>losing money</b>.\n<i>There are no profits available to pass on to you and by holding this stock you could lose your investment if they declare bankruptcy -- not recommended for inexperienced investors</i>`;
+          responseMsg += `\n\n${rtquote.name} is currently <b>not profitable</b> and <b>losing money</b>.\n<i>By holding this stock you could lose your investment if they declare bankruptcy -- not recommended for inexperienced investors</i>`;
         }
       }
       bot.sendMessage(msg.chat.id, responseMsg, {
