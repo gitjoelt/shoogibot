@@ -60,7 +60,7 @@ const quote = bot => {
       // Assemble all the data into one object literal
       const rtquote = {
         name: quoteData.data.companyName || longName,
-        symbol: quoteData.data.ticker.replace(postfix, "") || quoteData.data.symbol,
+        symbol: quoteData.data.ticker || quoteData.data.symbol,
         price: quoteData.data.price || quoteData.data.latestPrice,
         change: quoteData.data.pointgl || quoteData.data.change.toFixed(2) || 0,
         percent:
@@ -73,7 +73,7 @@ const quote = bot => {
       };
 
       if (rtquote.price) {
-        responseMsg = `<b>${rtquote.symbol.toUpperCase()}</b>`;
+        responseMsg = `<b>${rtquote.symbol.toUpperCase().replace(postfix, "")}</b>`;
         if (rtquote.name) {
           responseMsg += ` ${rtquote.name}\n`;
         } else {
